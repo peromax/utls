@@ -5,7 +5,6 @@
 package tls
 
 import (
-	"internal/godebug"
 	"slices"
 	_ "unsafe" // for linkname
 )
@@ -13,13 +12,13 @@ import (
 // Defaults are collected in this file to allow distributions to more easily patch
 // them to apply local policies.
 
-var tlsmlkem = godebug.New("tlsmlkem")
+// var tlsmlkem = godebug.New("tlsmlkem")
 
 // defaultCurvePreferences is the default set of supported key exchanges, as
 // well as the preference order.
 func defaultCurvePreferences() []CurveID {
 	// [uTLS section begins]
-	if tlsmlkem.Value() == "0" {
+	if true {
 		return []CurveID{X25519, CurveP256, CurveP384, CurveP521}
 	}
 	// [uTLS section ends]
