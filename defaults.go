@@ -5,6 +5,7 @@
 package tls
 
 import (
+	"internal/godebug"
 	"slices"
 	_ "unsafe" // for linkname
 )
