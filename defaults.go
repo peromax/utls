@@ -12,15 +12,15 @@ import (
 // Defaults are collected in this file to allow distributions to more easily patch
 // them to apply local policies.
 
-// var tlsmlkem = godebug.New("tlsmlkem") [uTLS]
+var tlsmlkem = godebug.New("tlsmlkem")
 
 // defaultCurvePreferences is the default set of supported key exchanges, as
 // well as the preference order.
 func defaultCurvePreferences() []CurveID {
 	// [uTLS section begins]
-	// if tlsmlkem.Value() == "0" {
-	// 	return []CurveID{X25519, CurveP256, CurveP384, CurveP521}
-	// }
+	if tlsmlkem.Value() == "0" {
+		return []CurveID{X25519, CurveP256, CurveP384, CurveP521}
+	}
 	// [uTLS section ends]
 
 	return []CurveID{X25519MLKEM768, X25519, CurveP256, CurveP384, CurveP521}
